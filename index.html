@@ -1,11 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="img/logo.png" type="img/png">
+    <link rel="stylesheet" href="styles.css">
+    <title>BLOGY</title>
 </head>
+
 <body>
-    
+
+    <!-- Encabezado -->
+
+    <div class="container">
+        <header class="header">
+            <div class="logo-container">
+                <a href="#description"><img src="img/logo1 - copia.png" alt="Logo" class="logo"></a>
+            </div>
+
+            <!-- Navegacion -->
+
+            <nav class="nav">
+                <ul class="nav__ul">
+                    <li class="nav__li"><img src="img/home.png" class="icon"><a href="#">VLOG</a></li>
+                    <li class="nav__li"><img src="img/contacto2.png" class="icon"><a href="#contact">Contactanos</a>
+                    </li>
+                    <li class="nav__li"><img src="img/contacto.png" class="icon"><a href="#">Crear usuario</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Descripción -->
+
+        <section id="description">
+            <div class="description-container">
+                <h1>BLOGY un blog hecho por y para Dominicanos! <br><br>Aquí puedes decir lo que quieras sin miedo a lo
+                    que te diga la gente😂.</h1>
+            </div>
+            <button>Comenta algo... </button>
+            <img src="img/envio.png" class="icon">
+        </section>
+
+        <!-- Contactanos -->
+
+        <section id="contact">
+            <img src="img/contacto2.png" alt="Contacto">
+            <form action="">
+                <input type="text" placeholder="Escriba su Usuario...">
+                <input type="text" placeholder="Díganos su problema...">
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+        <footer>
+            <p>&copy;BLOGY</p>
+        </footer>
+    </div>
 </body>
+
 </html>

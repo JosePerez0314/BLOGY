@@ -1,0 +1,68 @@
+/* Estilos generales */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #0e0d0d;
+    color: #fefefe;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Encabezado */
+
+.logo {
+    height: 500px;
+    width: 500px;
+}
+
+.header a {
+    color: #FEF445;
+    font-size: 20px;
+}
+
+.header ul li {
+    margin-top: 17px;
+}
+
+.header ul img {
+    margin-right: 5px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.header nav {
+    margin: 15px;
+}
+
+/* Descripción */
+
+#description {
+    margin: 30px;
+}
+
+.description-container {}
+
+#description h1 {
+    font-size: 30;
+    font-weight: 100;
+}
+
+
+/* Contacto */
+
+#contact img {
+    height: 70px;
+    width: 70px;
+}
+
