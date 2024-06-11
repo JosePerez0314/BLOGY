@@ -23,7 +23,7 @@
 
             <nav class="nav">
                 <ul class="nav__ul">
-                    <li class="nav__li"><img src="img/home.png" class="icon"><a href="#">VLOG</a></li>
+                    <li class="nav__li"><img src="img/home.png" class="icon"><a href="#">BLOG</a></li>
                     <li class="nav__li"><img src="img/contacto2.png" class="icon"><a href="#contact">Contactanos</a>
                     </li>
                     <li class="nav__li"><img src="img/contacto.png" class="icon"><a href="#">Crear usuario</a></li>
@@ -33,27 +33,31 @@
 
         <!-- Descripción -->
 
-        <section id="description">
+        <main id="description">
             <div class="description-container">
                 <h1>BLOGY un blog hecho por y para Dominicanos! <br><br>Aquí puedes decir lo que quieras sin miedo a lo
                     que te diga la gente😂.</h1>
             </div>
-            <button>Comenta algo... </button>
-            <img src="img/envio.png" class="icon">
-        </section>
+            <div class="description__button">
+                <button>Comenta algo... </button>
+                <img src="img/envio.png" class="icon">
+            </div>
+        </main>
 
         <!-- Contactanos -->
 
         <section id="contact">
-            <img src="img/contacto2.png" alt="Contacto">
-            <form action="">
-                <input type="text" placeholder="Escriba su Usuario...">
-                <input type="text" placeholder="Díganos su problema...">
-                <button type="submit">Enviar</button>
-            </form>
+            <div class="contact-container">
+                <img src="img/contacto2.png" alt="Contacto">
+                <form action="">
+                    <input type="text" placeholder="Escriba su Usuario..." class="contact__input">
+                    <input type="text" placeholder="Díganos su problema..." class="contact__input">
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
         </section>
 
-        <footer>
+        <footer class="footer">
             <p>&copy;BLOGY</p>
         </footer>
     </div>
