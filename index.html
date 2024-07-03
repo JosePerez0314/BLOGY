@@ -16,7 +16,8 @@
     <div class="container">
         <header class="header">
             <div class="logo-container">
-                <a href="#description"><img src="img/logo1 - copia.png" alt="Logo" class="logo"></a>
+                <a href="#description"><img src="img/logo1.png" alt="Logo" class="logo-1"></a>
+                <a href="#description"><img src="img/logo2.png" alt="Logo" class="logo-2"></a>
             </div>
 
             <!-- Navegacion -->
@@ -34,9 +35,13 @@
         <!-- Descripción -->
 
         <main id="description">
-            <div class="description-container">
-                <h1>BLOGY un blog hecho por y para Dominicanos! <br><br>Aquí puedes decir lo que quieras sin miedo a lo
-                    que te diga la gente😂.</h1>
+            <div class="comentario-container">
+                <img src="img/Comentario.png" alt="persona haciendo referencia a comentario">
+                <div class="description-container">
+                    <h1>BLOGY un blog hecho por y para Dominicanos! <br><br>Aquí puedes decir lo que quieras sin miedo a
+                        lo
+                        que te diga la gente😂.</h1>
+                </div>
             </div>
             <div class="description__button">
                 <button>Comenta algo... </button>
@@ -52,14 +57,10 @@
                 <form action="">
                     <input type="text" placeholder="Escriba su Usuario..." class="contact__input">
                     <input type="text" placeholder="Díganos su problema..." class="contact__input">
-                    <button type="submit">Enviar</button>
                 </form>
+                <button type="submit" id="submitButton">Enviar</button> <!-- Configurar con javascript para que mande la informacion al form -->
             </div>
         </section>
-
-        <footer class="footer">
-            <p>&copy;BLOGY</p>
-        </footer>
     </div>
 </body>
 
