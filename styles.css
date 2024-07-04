@@ -16,6 +16,7 @@ body {
 }
 
 body, footer {
+    height: 100%;
     width: 100%;
 }
 
@@ -34,7 +35,9 @@ ul {
 /* Encabezado */
 
 .header {
-    margin-top: -40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .logo-container {
@@ -122,7 +125,6 @@ h1 {
     width: 120px;
     border-radius: 10px;
     border: 2px solid #0d0d0d;
-    box-shadow: 2px 2px 10px #2c2c2c;
     padding: 5px;
 }
 
@@ -147,6 +149,7 @@ h1 {
 
 .description__button button {
     margin: -30px 0 0 0;
+
 }
 
 .description__button img {
@@ -158,6 +161,7 @@ h1 {
 
 #contact {
     margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 #contact img {
@@ -188,6 +192,8 @@ h1 {
     background-color: #0d0d0d;
     color: #fefefe;
     border: 2px solid #6d6b6b;
+    border-radius: 5px;
+    padding: 10px 20px 10px 7px;
 }
 
 #contact form input::placeholder {
@@ -195,14 +201,13 @@ h1 {
 }
 
 #contact button {
+    width: 80px;
     height: 30px;
-    width: 60px;
     background-color: #FEF445;
-    border-radius: 10px;
-    border: 2px solid #0d0d0d;
-    box-shadow: 2px 2px 10px #2c2c2c;
+    border-radius: 5px;
+    border: none;
     padding: 5px;
-    margin-left: 5px;
+    color: rgb(0, 0, 0);
 }
 
 #contact button:hover {
@@ -210,17 +215,17 @@ h1 {
     color: #807a1a;
 }
 
+#contact button:active {
+    background-color: #cec63a;
+}
+
+
 /* Pie de pagina */
 
 .footer {
-    margin-top: auto;
-    height: 30px;
-    padding: 35px;
+ text-align: center;
 }
 
-.footer p {
-   text-align: center;
-}
 
 /* Resoluciones */
 
@@ -347,15 +352,15 @@ h1 {
 
     /* Encabezado */
     .header {
-        display: flex;
+        flex-direction: row;
         justify-content: space-between;
-        align-items: center;
     }
 
     .logo-1 {
         display: block;
         height: 200px;
         width: 200px;
+        margin-top: -30px;
     }
 
     .logo-2 {
@@ -363,9 +368,11 @@ h1 {
     }
 
     .logo-container {
-        margin-top: 0;
+        margin-top: 0px;
         margin-bottom: 0;
     }
+
+    /* Navegación */
 
     .nav__ul {
         margin-top: 20px;
@@ -376,6 +383,14 @@ h1 {
     .nav__li {
         margin-left: 15px;
         padding-left: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .icon {
+        height: 25px;
+        width: 25px;
     }
 
     /* Sección de la descripción */
@@ -399,6 +414,11 @@ h1 {
 
 
     /* Contacto */
+
+    #contact {
+        padding: 40px;
+    }
+
     .contact-container form {
         flex-direction: row !important;
     }
@@ -417,8 +437,9 @@ h1 {
 
     /* footer */
 
-    .footer p {
+    .footer {
         text-align: end;
+        margin-left: -30px;
     }
 }
 
