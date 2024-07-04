@@ -15,33 +15,32 @@
         <header class="header">
                     <div class="logo-container">
                         <a href="#description"><img src="img/logo1.png" alt="Logo" class="logo"></a>
-
+                    </div>
                         <button>&#9776;</button>
 
                         <!--Menu boton hamburguesa-->
 
                         <nav class="nav">
-                            <ul class="nav__ul">
-                                <li class="nav__li"><img src="img/home.png" class="icon"><a href="index.html">BLOG</a></li>
-                                <li class="nav__li"><img src="img/contacto2.png" class="icon"><a href="index.html">Contactanos</a>
-                                </li>
-                                <li class="nav__li"><img src="img/contacto.png" class="icon"><a href="usuario.html">Crear usuario</a></li>
-                            </ul>
+                        
                         </nav>
+                    
         </header>
 
         <!--Crear usuario-->
 
         <section id="user">
-            <h1>
-                Crear tu usuario
-            </h1>
-            <form action="">
-                <input type="text" placeholder="Escribe tu usuario...">
-                <button type="submit">Crear</button>
-            </form>
+            <h1>Crear tu usuario</h1>
+                <form action="">
+                    <div>
+                        <input type="text" placeholder="Escribe tu usuario..." minlength="4" maxlength="12" class="form_input">
+                    </div>
+                    <div>
+                        <button type="submit" class="form__submit">Crear</button>
+                    </div>
+                </form>
         </section>
 
+        <!--Copyright-->
         <footer>
             <p>&copy;BLOGY</p>
         </footer>

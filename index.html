@@ -1,11 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="BLOGY, un blog hecho por y para Dominicanos donde puedes expresarte libremente.">
+    <meta property="og:title" content="BLOGY">
+    <meta property="og:description"
+        content="Un blog hecho por y para Dominicanos! Aquí puedes decir lo que quieras sin miedo a lo que te diga la gente.">
+    <meta property="og:image" content="img/logo.png">
+    <meta property="og:url" content="URL_DEL_SITIO">
+    <link rel="icon" href="img/logo.png" type="img/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="comentario.html">
+    <link rel="stylesheet" href="usuario.html">
+    <title>BLOGY</title>
 </head>
+
 <body>
-    
+
+    <!-- Encabezado -->
+
+    <div class="container">
+        <header class="header">
+            <div class="logo-container">
+                <a href="#description"><img src="img/logo1.png" alt="Logo" class="logo-1"></a>
+                <a href="#description"><img src="img/logo2.png" alt="Logo" class="logo-2"></a>
+            </div>
+
+            <!-- Navegacion -->
+
+            <nav class="nav">
+                <ul class="nav__ul">
+                    <li class="nav__li"><img src="img/home.png" class="icon"><a href="#description">BLOG</a></li>
+                    <li class="nav__li"><img src="img/contacto2.png" class="icon"><a href="#contact">Contactanos</a>
+                    </li>
+                    <li class="nav__li"><img src="img/contacto.png" class="icon"><a href="usuario.html"
+                            target="_blank">Crear usuario</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Descripción -->
+
+        <main id="description">
+            <div class="comentario-container">
+                <img src="img/Comentario.png" alt="persona haciendo referencia a comentario">
+                <div class="description-container">
+                    <h1>BLOGY un blog hecho por y para Dominicanos! <br><br>Aquí puedes decir lo que quieras sin miedo a
+                        lo
+                        que te diga la gente😂.</h1>
+                </div>
+            </div>
+            <div class="description__button">
+                <button><a href="comentario.html" target="_blank">Comenta algo... </a></button>
+                <img src="img/envio.png" class="icon">
+            </div>
+        </main>
+
+        <!-- Contactanos -->
+
+        <section id="contact">
+            <div class="contact-container">
+                <img src="img/contacto2.png" alt="Contacto">
+                <form action="">
+                    <input type="text" placeholder="Escriba su Usuario..." class="contact__input">
+                    <input type="text" placeholder="Díganos su problema..." class="contact__input">
+                </form>
+                <button type="submit" id="submitButton">Enviar</button>
+                <!-- Configurar con javascript para que mande la informacion al form -->
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; Blogy</p>
+        </footer>
+    </div>
 </body>
+
 </html>
