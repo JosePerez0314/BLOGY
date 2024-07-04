@@ -12,6 +12,12 @@ body{
     flex-direction: column;
 }
 
+     /* Encabezado */
+
+.header{
+    display: flex;
+}
+
 .container{
     display: flex;
     flex-direction: column;
@@ -39,6 +45,11 @@ ul li a{
     color: #FEF445;
 }
 
+a:hover{
+    color:#807a1a;
+}
+
+    /*formulario*/
 
 h1 {
     color: #FEF445;
@@ -62,6 +73,7 @@ form{
     font-size: 20px;
     outline: none;
 }
+        /*Boton enviar (submit)*/
 
 .form__submit {
     margin-top: 25px;
@@ -82,15 +94,15 @@ form{
     cursor: pointer;
     color: #807a1a;
 }
-
+        /*Pie de pagina*/
 .footer{
     color: white;
     text-align: center;
     margin-top: auto;
 }
 
-
-@media (min-width: 400px) {
+    /*Resoluciones*/
+@media (min-width: 740px) {
     
     header{
         display: flex;
@@ -99,6 +111,11 @@ form{
 
     .logo{
         width: 250px;
+        
+    }
+
+    .icon{
+        margin-left: 3px;
     }
 
     .hambutton{
