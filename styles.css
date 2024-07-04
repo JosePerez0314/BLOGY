@@ -13,7 +13,6 @@ body {
     color: #fefefe;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
 }
 
 body, footer {
@@ -30,7 +29,6 @@ ul {
     max-width: 100%;
     padding: 10px;
     margin: 0 auto;
-    flex: 1; /* Permite que la .container ocupe el espacio restante */
 }
 
 /* Encabezado */
@@ -149,6 +147,7 @@ h1 {
     color: #0d0d0d;
 }
 
+
 .description__button button {
     margin: -30px 0 0 0;
 }
@@ -156,6 +155,7 @@ h1 {
 .description__button img {
     margin: -5px;
 }
+
 
 /* Contacto */
 
@@ -220,10 +220,10 @@ h1 {
     justify-content: center;
     align-items: center;
     margin-top: auto;
+    position: absolute;
+    bottom: 0px;
     width: 100%;
     text-align: center;
-    position: relative; /* Cambiado a relativo */
-    bottom: -50px; /* Asegura que el pie de página esté en la parte inferior */
 }
 
 .footer p {
@@ -430,3 +430,4 @@ h1 {
         margin-left: 40px !important;
     }
 }
+
