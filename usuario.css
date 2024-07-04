@@ -1,5 +1,11 @@
 body{
-    
+    margin: 0px;
+    padding: 0px;
+    background-color: #0e0d0d;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .icon{
@@ -7,6 +13,72 @@ body{
     height: 20px;
 }
 
+.hambutton{
+    box-sizing: border-box;
+    
+}
+
+ul{
+    list-style: none;
+    display: none;
+}
+
+img {
+    width: 300px;
+    margin: 0px;
+}
+
 ul li a{
     color: #FEF445;
+}
+
+h1 {
+    color: #FEF445;
+    text-align: center;
+    font-size: 40px;
+    margin: 0 0 20px 0;
+}
+
+form{
+    text-align: center;
+}
+
+
+.form_input{
+    font-family: sans-serif;
+    background-color: #0e0d0d;
+    color:#ffffff;
+    border: 2px solid #6d6b6b;
+    border-radius: 5px;
+    padding: 10px 20px 10px 7px;
+    font-size: 20px;
+    outline: none;
+}
+
+.form__submit {
+    margin-top: 25px;
+    padding: 8px 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FEF445;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.form__submit:active{
+    background-color: #cec63a;
+}
+
+footer{
+    color: white;
+    text-align: center;
+    margin-top: auto;
+    height: 30px;
+    padding: 35px;
+}
+
+
+@media screen {
+    
 }
