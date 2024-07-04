@@ -61,9 +61,13 @@ header, footer {
     margin-top: -45px;
 }
 
-.header__logo-container img{
+.header__logo-container img {
     height: 200px;
     width: 200px;
+}
+
+.header__logo-container img:first-child {
+    display: none;
 }
 
 .ham {
@@ -87,7 +91,7 @@ header, footer {
     width: 100%;
     position: absolute;
     top: 0;
-    display: none; /* Ocultar inicialmente */
+    display: none;
     justify-content: center;
     align-items: center;
     z-index: 1;
@@ -206,3 +210,108 @@ header, footer {
 .footer p {
     margin: 0;
 }
+
+/* Resolución de tablet */
+
+ @media screen and (min-width: 600px) {
+    
+    /* Navegación */
+
+    .ham {
+        display: none;
+    }
+
+    .nav {
+        display: flex;
+        position: relative;
+        height: auto;
+        background-color: transparent;
+        margin-top: -40px;
+    }
+
+    .nav__ul {
+        flex-direction: row;
+    }
+
+    .nav__li {
+        padding-left: 30px;
+    }
+
+    .nav__li a {
+        font-size: 20px;
+    }
+
+    .icon {
+        height: 20px;
+        width: 20px;
+    }
+
+    /* Area principal */
+
+    main {
+        margin-top: 60px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    /* Pie de pagina */
+
+    .footer {
+        justify-content: end;
+        margin-left: -35px;
+    }
+
+ }
+
+ /* Version de desktop */
+
+ @media screen and (min-width: 900px) {
+
+    /* Encabezado */
+
+    .header {
+        flex-direction: row;
+    }
+
+    .header__logo-container img:first-child {
+        display: block;
+        position: absolute;
+        left: -5px;
+        top: -30px;
+    }
+
+    .header__logo-container img:last-child {
+        display: none;
+    }
+
+    /* Navegación */
+
+    .nav {
+        background-color: transparent;
+    }
+
+    .nav__ul {
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        top: 30px;
+        right: 0;
+        height: auto;
+    }
+
+    .nav__li {
+        padding: 10px 20px;
+    }
+
+    /* Seccion principal */
+
+    main {
+        padding-top: 170px;
+    }
+    
+    h1 {
+        font-size: 50px;
+    }
+ }

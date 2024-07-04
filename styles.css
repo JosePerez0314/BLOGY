@@ -13,6 +13,7 @@ body {
     color: #fefefe;
     display: flex;
     flex-direction: column;
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
 }
 
 body, footer {
@@ -29,12 +30,16 @@ ul {
     max-width: 100%;
     padding: 10px;
     margin: 0 auto;
+    flex: 1; /* Permite que la .container ocupe el espacio restante */
 }
 
 /* Encabezado */
 
 .header {
-    margin-top: -40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo-container {
@@ -144,7 +149,6 @@ h1 {
     color: #0d0d0d;
 }
 
-
 .description__button button {
     margin: -30px 0 0 0;
 }
@@ -152,7 +156,6 @@ h1 {
 .description__button img {
     margin: -5px;
 }
-
 
 /* Contacto */
 
@@ -213,9 +216,14 @@ h1 {
 /* Pie de pagina */
 
 .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: auto;
-    height: 30px;
-    padding: 35px;
+    width: 100%;
+    text-align: center;
+    position: relative; /* Cambiado a relativo */
+    bottom: -50px; /* Asegura que el pie de página esté en la parte inferior */
 }
 
 .footer p {
@@ -287,6 +295,13 @@ h1 {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    /* Pie de pagina */
+
+    .footer {
+        justify-content: end;
+        margin-left: -35px;
     }
 
 }
@@ -414,11 +429,4 @@ h1 {
         margin-top: 5px !important;
         margin-left: 40px !important;
     }
-
-    /* footer */
-
-    .footer p {
-        text-align: end;
-    }
 }
-
