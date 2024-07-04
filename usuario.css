@@ -1,52 +1,120 @@
-html{
-    height: 100%;
+/* Estilos generales */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
+body {
     margin: 0px;
     padding: 0px;
     background-color: #0e0d0d;
-    height: 100%;
     font-family: sans-serif;
     display: flex;
     flex-direction: column;
 }
 
-     /* Encabezado */
-
-.header{
-    display: flex;
-}
-
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    padding: 1em;
-}
-
-
-ul{
+ul {
     list-style: none;
-    display: none;
 }
 
-.logo{
-    width: 300px;
-    margin: 0px;
-}
-
-
-ul li a{
+ul li a {
     color: #FEF445;
 }
 
-a:hover{
-    color:#807a1a;
+a:hover {
+    color: #807a1a;
 }
 
-    /*formulario*/
+.container {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+/* Encabezado */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.header a {
+    color: #FEF445;
+    font-size: 30px;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.header__logo-container {
+    margin-top: -45px;
+}
+
+.header__logo-container img {
+    height: 200px;
+    width: 200px;
+}
+
+.header__logo-container img:first-child {
+    display: none;
+}
+
+.ham {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fefefe;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+
+/* Navegación */
+
+.nav {
+    background-color: #2e2d2d;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.nav__ul {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav__li {
+    margin-top: 130px;
+}
+
+.nav__li a:hover {
+    color: #c6d19e;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+}
+
+/*formulario*/
 
 h1 {
     color: #FEF445;
@@ -55,22 +123,22 @@ h1 {
     margin: 0 0 20px 0;
 }
 
-form{
+form {
     text-align: center;
 }
 
-
-.form_input{
+.form_input {
     font-family: sans-serif;
     background-color: #0e0d0d;
-    color:#ffffff;
+    color: #ffffff;
     border: 2px solid #6d6b6b;
     border-radius: 5px;
     padding: 10px 20px 10px 7px;
     font-size: 20px;
     outline: none;
 }
-        /*Boton enviar (submit)*/
+
+/*Boton enviar (submit)*/
 
 .form__submit {
     margin-top: 25px;
@@ -83,52 +151,121 @@ form{
     cursor: pointer;
 }
 
-.form__submit:active{
+.form__submit:active {
     background-color: #cec63a;
 }
 
-.form__submit:hover{
+.form__submit:hover {
     cursor: pointer;
     color: #807a1a;
 }
-        /*Pie de pagina*/
-.footer{
-    color: white;
-    text-align: center;
+
+/*Pie de pagina*/
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: auto;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
 }
 
-    /*Resoluciones*/
-@media (min-width: 740px) {
-    
-    header{
-        display: flex;
-        justify-content: end;
-    }
+.footer p {
+    color: #fefefe;
+    margin: 0;
+}
 
-    .logo{
-        width: 250px;
-        
-    }
+/* Resolución de tablet */
 
-    .icon{
-        margin-left: 3px;
-    }
+@media screen and (min-width: 600px) {
 
-    .hambutton{
+    /* Navegación */
+
+    .ham {
         display: none;
     }
 
-    ul{
-        display: inline;
+    .nav {
+        display: flex;
+        position: relative;
+        height: auto;
+        background-color: transparent;
+        margin-top: -120px;
     }
 
-    li{
-        display: inline-block;
-        margin: 0 15px;
+    .nav__ul {
+        flex-direction: row;
     }
 
-    .icon{
-        width: 25px;
+    .nav__li {
+        padding-left: 30px;
     }
+
+    .nav__li a {
+        font-size: 20px;
+    }
+
+    .icon {
+        height: 20px;
+        width: 20px;
+    }
+
+
+    .icon {
+        height: 20px;
+        width: 20px;
+    }
+
+    /* Pie de pagina */
+
+    .footer {
+        justify-content: end;
+        margin-left: -35px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    /* Encabezado */
+
+    .header {
+        flex-direction: row;
+        padding-bottom: 170px;
+    }
+
+    .header__logo-container img:first-child {
+        display: block;
+        position: absolute;
+        left: -5px;
+        top: -30px;
+    }
+
+    .header__logo-container img:last-child {
+        display: none;
+    }
+
+    /* Navegación */
+
+    .nav {
+        background-color: transparent;
+    }
+
+    .nav__ul {
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        top: -30px;
+        right: 0;
+        height: auto;
+    }
+
+    .nav__li {
+        padding: 10px 20px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
 }
