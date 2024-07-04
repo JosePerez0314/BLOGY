@@ -125,7 +125,6 @@ h1 {
     width: 120px;
     border-radius: 10px;
     border: 2px solid #0d0d0d;
-    box-shadow: 2px 2px 10px #2c2c2c;
     padding: 5px;
 }
 
@@ -150,6 +149,7 @@ h1 {
 
 .description__button button {
     margin: -30px 0 0 0;
+
 }
 
 .description__button img {
@@ -192,6 +192,8 @@ h1 {
     background-color: #0d0d0d;
     color: #fefefe;
     border: 2px solid #6d6b6b;
+    border-radius: 5px;
+    padding: 10px 20px 10px 7px;
 }
 
 #contact form input::placeholder {
@@ -199,20 +201,24 @@ h1 {
 }
 
 #contact button {
+    width: 80px;
     height: 30px;
-    width: 60px;
     background-color: #FEF445;
-    border-radius: 10px;
-    border: 2px solid #0d0d0d;
-    box-shadow: 2px 2px 10px #2c2c2c;
+    border-radius: 5px;
+    border: none;
     padding: 5px;
-    margin-left: 5px;
+    color: rgb(0, 0, 0);
 }
 
 #contact button:hover {
     cursor: pointer;
     color: #807a1a;
 }
+
+#contact button:active {
+    background-color: #cec63a;
+}
+
 
 /* Pie de pagina */
 
