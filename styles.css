@@ -34,10 +34,7 @@ ul {
 /* Encabezado */
 
 .header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin-top: -40px;
 }
 
 .logo-container {
@@ -216,14 +213,9 @@ h1 {
 /* Pie de pagina */
 
 .footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: auto;
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    text-align: center;
+    height: 30px;
+    padding: 35px;
 }
 
 .footer p {
@@ -295,13 +287,6 @@ h1 {
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-
-    /* Pie de pagina */
-
-    .footer {
-        justify-content: end;
-        margin-left: -35px;
     }
 
 }
@@ -428,6 +413,12 @@ h1 {
         width: 100%;
         margin-top: 5px !important;
         margin-left: 40px !important;
+    }
+
+    /* footer */
+
+    .footer p {
+        text-align: end;
     }
 }
 
