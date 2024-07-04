@@ -1,11 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta property="og:image" content="img/logo.png">
+    <meta property="og:url" content="URL_DEL_SITIO">
+    <link rel="icon" href="img/logo.png" type="img/png">
+    <link rel="stylesheet" href="comentario.css">
+    <title>Comentarios</title>
 </head>
+
 <body>
+    <div class="container">
+
+        <!-- Encabezado -->
+
+        <header class="header">
+            <div class="header__logo-container">
+                <img src="img/logo2.png" alt="logo">
+            </div>
+
+            <!-- Navegación -->
+
+            <button class="ham" id="hamButton">&#9776;</button>
+            <nav class="nav">
+                <ul class="nav__ul">
+                    <li class="nav__li"><img src="img/home.png" class="icon"><a href="#description">BLOG</a></li>
+                    <li class="nav__li"><img src="img/contacto2.png" class="icon"><a href="#contact">Contactanos</a>
+                    </li>
+                    <li class="nav__li"><img src="img/contacto.png" class="icon"><a href="usuario.html" target="_blank">Crear usuario</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- Area principal -->
+
+        <main>
+            <h1>¡Tira la Guayaba!</h1>
+        </main>
+
+        <!-- Comentarios -->
+
+        <section id="coment">
+            <form action="" class="buscar">
+                <input type="text" placeholder="Buscar........" class="buscar__input">
+                <button type="submit" class="buscar__button"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <div class="comentarios">
+                <form action="">
+                    <div class="comentario-input">
+                        <img src="img/burbuja-Comentario.png" class="comentarios__icon">
+                        <div class="input-button-container">
+                            <input type="text" placeholder="Agrega tu comentario.........." class="comentario__input">
+                            <button type="submit" class="comentario__button">Comentar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        
+        <!-- Pie de pagina -->
+
+        <footer class="footer">
+            <p>&copy; Blogy</p>
+        </footer>
+    </div>
     
+    <script src="comentario.js"></script>
+    <script src="https://kit.fontawesome.com/99cbbdca64.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

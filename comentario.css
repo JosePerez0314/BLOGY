@@ -1,0 +1,208 @@
+/* Estilos generales */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #0e0d0d;
+    color: #fefefe;
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+    margin-top: -20px;
+}
+
+header, footer {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    margin: 0 auto;
+    min-height: 100vh; 
+    position: relative;
+}
+
+/* Encabezado */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header a {
+    color: #FEF445;
+    font-size: 30px;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.header__logo-container {
+    margin-top: -45px;
+}
+
+.header__logo-container img{
+    height: 200px;
+    width: 200px;
+}
+
+.ham {
+    position: absolute;
+    top: 20px; 
+    right: 20px; 
+    background: none; 
+    border: none; 
+    color: #fefefe; 
+    font-size: 40px; 
+    cursor: pointer; 
+    z-index: 10;
+}
+
+
+/* Navegación */
+
+.nav {
+    background-color: #2e2d2d;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display: none; /* Ocultar inicialmente */
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.nav__ul {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: -90px;
+}
+
+.nav__li {
+  margin-top: 130px;
+}
+
+.nav__li a:hover {
+    color: #c6d19e;
+  }
+
+.icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+}
+
+
+/* Seccion de los comentarios */
+
+#coment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.buscar {
+    margin-bottom: 30px;
+}
+
+.buscar__input {
+    height: 40px;
+    font-size: 20px;
+    outline: none;
+}
+
+.buscar__input::placeholder {
+    padding-left: 10px;
+}
+
+.buscar__button {
+    background-color: #2e2d2d;
+    color: #fefefe;
+    font-size: 20px;
+    height: 42px;
+    width: 70px;
+    cursor: pointer;
+}
+
+.comentarios__icon {
+    width: 50px;
+    position: relative;
+    top: -0px;
+    left: -10px;
+}
+
+.comentario-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.input-button-container {
+    position: relative;
+    width: 280px;
+}
+
+.comentario__input {
+    height: 65px;
+    width: 100%;
+    border-radius: 15px;
+    background-color: #0e0d0d;
+    border: 1px solid #fefefe;
+    color: #fefefe;
+    padding-left: 15px; /* Espacio para el ícono */
+    outline: none;
+}
+
+.comentario__button {
+    background-color: transparent;
+    color: #FEF445;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 10px; /* Ajustar la posición del botón dentro del input */
+    top: 70%; /* Centrar verticalmente el botón */
+    transform: translateY(-50%);
+    height: 100%; /* Ajustar la altura para que cubra todo el input */
+}
+
+/* Pie de pagina */
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+}
