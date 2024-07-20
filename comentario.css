@@ -137,11 +137,11 @@ header, footer {
     height: 40px;
     font-size: 20px;
     outline: none;
+    padding: 10px;
+    padding-right: 15px; /* Espacio para el botón, ajusta según sea necesario */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
 
-.buscar__input::placeholder {
-    padding-left: 10px;
-}
 
 .buscar__button {
     background-color: #2e2d2d;
@@ -179,7 +179,9 @@ header, footer {
     border: 1px solid #fefefe;
     color: #fefefe;
     padding-left: 15px; /* Espacio para el ícono */
+    padding-right: 80px; /* Espacio para el botón, ajusta según sea necesario */
     outline: none;
+    box-sizing: border-box; /* Para que el padding se incluya en el ancho total */
 }
 
 .comentario__button {
