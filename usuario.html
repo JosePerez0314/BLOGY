@@ -1,62 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/logo.png" type="img/png">
     <link rel="stylesheet" href="usuario.css">
-    <title>BLOGY</title>
-
+    <title>Crear usuario</title>
 </head>
-
 <body>
     <div class="container">
-
-        <!--Encabezado-->
-
-         <!-- Encabezado -->
-
-         <header class="header">
+        <header class="header">
             <div class="header__logo-container">
                 <img src="img/logo1.png" alt="logo">
                 <img src="img/logo2.png" alt="logo">
             </div>
-
-            <!-- Navegación -->
-
             <button class="ham" id="hamButton">&#9776;</button>
             <nav class="nav">
                 <ul class="nav__ul">
-                    <li class="nav__li"><img src="img/home.png" class="icon"><a href="index.html#description" target="_blank">BLOG</a></li>
-                    <li class="nav__li"><img src="img/contacto2.png" class="icon"><a href="index.html#contact" target="_blank">Contactanos</a>
-                    </li>
-                    <li class="nav__li"><img src="img/contacto.png" class="icon"><a href="usuario.html" target="_blank">Crear usuario</a></li>
+                    <li class="nav__li"><img src="img/home.png" class="icon" title="icon"><a href="index.html#description">BLOG</a></li>
+                    <li class="nav__li"><img src="img/contacto2.png" class="icon" title="icon"><a href="index.html#contact">Contactanos</a></li>
+                    <li class="nav__li"><img src="img/contacto.png" class="icon" title="icon"><a href="usuario.html">Crear usuario</a></li>
                 </ul>
             </nav>
         </header>
         
-        <!--Crear usuario inputs-->
-
         <section class="user" id="user">
             <h1>Crear tu usuario</h1>
-                <form action="">
-                    <div>
-                        <input type="text" placeholder="Escribe tu usuario..." minlength="4" maxlength="12" class="form_input">
-                    </div>
-                    <div>
-                        <button type="submit" class="form__submit">Crear</button>
-                    </div>
-                </form>
+            <form id="createUserForm" action="/crear-usuario" method="POST">
+                <div>
+                    <input type="text" class="form__input" name="username" placeholder="Escribe tu usuario..." minlength="4" maxlength="12" required>
+                </div>
+                <div>
+                    <button type="submit" class="form__submit">Crear</button>
+                </div>
+            </form>
         </section>
-
-        <!--Pie pagina Copyright-->
-        <footer class="footer">
-            <p>&copy;BLOGY</p>
+        <footer class="footer"> 
+            <p>&copy; BLOGY</p>
         </footer>
+        <script src="usuario.js"></script> <!-- Asegúrate de que el nombre es correcto -->
     </div>
-
-    <script src="usuario.js"></script>
 </body>
-
 </html>

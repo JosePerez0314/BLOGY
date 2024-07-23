@@ -1,5 +1,21 @@
-// Asegurándome que primero cargue el DOM antes de que se ejecute el código JS
 document.addEventListener('DOMContentLoaded', (event) => {
+    // Verificar si el usuario está autenticado
+    fetch('/verificar-autenticacion')
+        .then(response => response.json())
+        .then(data => {
+            if (!data.autenticado) {
+                const userResponse = prompt("No tienes un usuario. Por favor, crea uno antes de comentar. ¿Quieres ir a la página de creación de usuario? (sí/no)");
+                if (userResponse && (userResponse.toLowerCase() === 'sí' || userResponse.toLowerCase() === 'si')) {
+                    window.location.href = '/usuario.html'; // Redirige a la página de creación de usuario
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error al verificar autenticación:', error);
+            // En caso de error en la verificación, podrías redirigir también si lo deseas
+            window.location.href = '/usuario.html';
+        });
+
     // Funcionalidades del botón hamburguesa
     const hamButton = document.getElementById('hamButton');
     const nav = document.querySelector('.nav');
@@ -38,4 +54,61 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         });
     }
+
+    // Manejar el envío de comentarios y cargar los comentarios existentes
+    const form = document.querySelector('form[action="/enviar-comentario"]');
+    if (form) {
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const commentInput = document.querySelector('input[name="comment"]');
+            const comment = commentInput.value;
+
+            try {
+                const response = await fetch('/enviar-comentario', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ comment })
+                });
+
+                if (response.ok) {
+                    commentInput.value = '';
+                    cargarComentarios(); // Carga los comentarios después de enviar uno nuevo
+                } else {
+                    alert('Error al enviar comentario');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al conectar con el servidor');
+            }
+        });
+    }
+
+    cargarComentarios();
 });
+
+async function cargarComentarios() {
+    try {
+        const response = await fetch('/obtener-comentarios');
+        if (response.ok) {
+            const comentarios = await response.json();
+            const comentariosLista = document.getElementById('comentarios-lista');
+            comentariosLista.innerHTML = '';
+
+            comentarios.forEach(comentario => {
+                const comentarioDiv = document.createElement('div');
+                comentarioDiv.classList.add('comentario');
+                comentarioDiv.innerHTML = `
+                    <p><strong>${comentario.username}:</strong> ${comentario.comment}</p>
+                `;
+                comentariosLista.appendChild(comentarioDiv);
+            });
+        } else {
+            console.error('Error al cargar comentarios');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}

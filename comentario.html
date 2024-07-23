@@ -27,18 +27,14 @@
             <button class="ham" id="hamButton">&#9776;</button>
             <nav class="nav">
                 <ul class="nav__ul">
-                    <li class="nav__li"><img src="img/home.png" class="icon"><a href="index.html#description"
-                            target="_blank">BLOG</a></li>
-                    <li class="nav__li"><img src="img/contacto2.png" class="icon"><a href="index.html#contact"
-                            target="_blank">Contactanos</a>
-                    </li>
-                    <li class="nav__li"><img src="img/contacto.png" class="icon"><a href="usuario.html"
-                            target="_blank">Crear usuario</a></li>
+                    <li class="nav__li"><img src="img/home.png" class="icon" title="icon"><a href="index.html#description" target="_blank">BLOG</a></li>
+                    <li class="nav__li"><img src="img/contacto2.png" class="icon" title="icon"><a href="index.html#contact" target="_blank">Contactanos</a></li>
+                    <li class="nav__li"><img src="img/contacto.png" class="icon" title="icon"><a href="usuario.html" target="_blank">Crear usuario</a></li>
                 </ul>
             </nav>
         </header>
 
-        <!-- Area principal -->
+        <!-- Área principal -->
 
         <main>
             <h1>¡Tira la Guayaba!</h1>
@@ -47,36 +43,35 @@
         <!-- Comentarios -->
 
         <section id="coment">
-            <!-- Formulario de busqueda -->
             <form action="" class="buscar">
                 <input type="text" placeholder="Buscar........" class="buscar__input">
                 <button type="submit" class="buscar__button"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
-            
-            <!-- Formulario de comentarios -->
             <div class="comentarios">
-                <form action="">
+                <form action="/enviar-comentario" method="POST">
                     <div class="comentario-input">
-                        <img src="img/burbuja-Comentario.png" class="comentarios__icon">
+                        <img src="img/burbuja-Comentario.png" title="icon" class="comentarios__icon">
                         <div class="input-button-container">
-                            <input type="text" id="comentarioInput" placeholder="Agrega tu comentario.........." class="comentario__input">
+                            <input type="text" name="comment" placeholder="Agrega tu comentario.........." class="comentario__input" required>
                             <button type="submit" class="comentario__button">Comentar</button>
                         </div>
                     </div>
                 </form>
+                <div id="comentarios-lista">
+                    <!-- Los comentarios cargados dinámicamente se insertarán aquí -->
+                </div>
             </div>
         </section>
-        
 
-        <!-- Pie de pagina -->
+        <!-- Pie de página -->
 
         <footer class="footer">
             <p>&copy; Blogy</p>
         </footer>
     </div>
-
-    <script src="https://kit.fontawesome.com/99cbbdca64.js" crossorigin="anonymous"></script>
+    
     <script src="comentario.js"></script>
+    <script src="https://kit.fontawesome.com/99cbbdca64.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
