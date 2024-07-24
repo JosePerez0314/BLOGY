@@ -4,10 +4,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         .then(response => response.json())
         .then(data => {
             if (!data.autenticado) {
-                const userResponse = prompt("No tienes un usuario. Por favor, crea uno antes de comentar. ¿Quieres ir a la página de creación de usuario? (sí/no)");
-                if (userResponse && (userResponse.toLowerCase() === 'sí' || userResponse.toLowerCase() === 'si')) {
-                    window.location.href = '/usuario.html'; // Redirige a la página de creación de usuario
-                }
+                const userResponse = alert("No tienes una cuenta, te vamos a redirigir a crear un usuario");
+                window.location.href = '/usuario.html'; 
             }
         })
         .catch(error => {

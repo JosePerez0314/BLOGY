@@ -1,5 +1,4 @@
 document.getElementById('createUserForm').addEventListener('submit', async function (event) {
-    // Mantener el código para el menú hamburguesa
     const hamButton = document.getElementById('hamButton');
     const nav = document.querySelector('.nav');
 
@@ -20,6 +19,7 @@ document.getElementById('createUserForm').addEventListener('submit', async funct
     event.preventDefault(); // Previene el comportamiento por defecto del formulario
 
     const username = document.querySelector('.form__input').value;
+    console.log('Enviando datos del usuario:', username);
 
     try {
         const response = await fetch('/crear-usuario', {
@@ -30,8 +30,9 @@ document.getElementById('createUserForm').addEventListener('submit', async funct
             body: JSON.stringify({ username: username })
         });
 
+        const result = await response.json();
         if (response.ok) {
-            alert('Usuario creado exitosamente');
+            alert(result.message);
             window.location.href = 'comentario.html'; // Redirige a la página de comentarios
         } else {
             alert('Error al crear el usuario');

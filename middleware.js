@@ -1,3 +1,7 @@
+// middleware.js
+
+const path = require('path');
+
 // Middleware para verificar la autenticación del usuario
 function verificarAutenticacion(req, res, next) {
     if (req.session && req.session.userId) {
@@ -7,7 +11,4 @@ function verificarAutenticacion(req, res, next) {
     }
 }
 
-// Aplicar el middleware a la ruta de comentarios
-app.get('/comentario.html', verificarAutenticacion, (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'comentario.html'));
-});
+module.exports = { verificarAutenticacion };
