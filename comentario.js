@@ -1,20 +1,17 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    // Verificar si el usuario está autenticado
     fetch('/verificar-autenticacion')
         .then(response => response.json())
         .then(data => {
             if (!data.autenticado) {
-                const userResponse = alert("No tienes una cuenta, te vamos a redirigir a crear un usuario");
+                alert("No tienes una cuenta, te vamos a redirigir a crear un usuario");
                 window.location.href = '/usuario.html'; 
             }
         })
         .catch(error => {
             console.error('Error al verificar autenticación:', error);
-            // En caso de error en la verificación, podrías redirigir también si lo deseas
             window.location.href = '/usuario.html';
         });
 
-    // Funcionalidades del botón hamburguesa
     const hamButton = document.getElementById('hamButton');
     const nav = document.querySelector('.nav');
 
@@ -33,7 +30,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         });
 
-        // Asegurarse de que el estado inicial del menú es correcto
         if (window.innerWidth < 600) {
             nav.style.display = 'none';
         } else {
@@ -41,19 +37,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
-    // Ajustar el cursor del input 
-    const comentarioInput = document.getElementById('comentarioInput');
-    const maxLength = 150; 
-
-    if (comentarioInput) {
-        comentarioInput.addEventListener('input', () => {
-            if (comentarioInput.value.length > maxLength) {
-                comentarioInput.value = comentarioInput.value.substring(0, maxLength);
-            }
-        });
-    }
-
-    // Manejar el envío de comentarios y cargar los comentarios existentes
     const form = document.querySelector('form[action="/enviar-comentario"]');
     if (form) {
         form.addEventListener('submit', async function (event) {
@@ -73,7 +56,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
                 if (response.ok) {
                     commentInput.value = '';
-                    cargarComentarios(); // Carga los comentarios después de enviar uno nuevo
+                    cargarComentarios();
                 } else {
                     alert('Error al enviar comentario');
                 }

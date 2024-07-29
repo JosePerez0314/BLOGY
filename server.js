@@ -7,20 +7,28 @@ const { verificarAutenticacion } = require('./middleware');
 
 const app = express();
 
-// Base de datos SQLite
-const db = new sqlite3.Database(':memory:');
+// Base de datos SQLite en archivo
+const db = new sqlite3.Database('database.db', (err) => {
+    if (err) {
+        console.error('Error al abrir la base de datos:', err.message);
+    } else {
+        console.log('Conectado a la base de datos SQLite.');
+    }
+});
 
 // Crear tablas
-db.run(`CREATE TABLE users (
+db.run(`CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT NOT NULL
 )`, (err) => {
     if (err) {
         console.error('Error creando la tabla users:', err.message);
+    } else {
+        console.log('Tabla users creada o ya existente.');
     }
 });
 
-db.run(`CREATE TABLE comments (
+db.run(`CREATE TABLE IF NOT EXISTS comments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     comment TEXT NOT NULL,
     user_id INTEGER NOT NULL,
@@ -28,6 +36,8 @@ db.run(`CREATE TABLE comments (
 )`, (err) => {
     if (err) {
         console.error('Error creando la tabla comments:', err.message);
+    } else {
+        console.log('Tabla comments creada o ya existente.');
     }
 });
 
@@ -54,27 +64,31 @@ app.post('/crear-usuario', (req, res) => {
         }
         // Simula una sesión de usuario después de crear el usuario
         req.session.userId = this.lastID; 
-        res.status(200).json({ message: 'Usuario creado exitosamente' }); // Enviar una respuesta JSON
+        console.log('Usuario creado con ID:', this.lastID);
+        res.status(200).json({ message: 'Usuario creado exitosamente' });
     });
 });
-
 
 // Ruta para enviar un comentario
-app.post('/crear-usuario', (req, res) => {
-    const { username } = req.body;
-    console.log('Intentando crear usuario:', username);
-    
-    db.run('INSERT INTO users (username) VALUES (?)', [username], function (err) {
+app.post('/enviar-comentario', (req, res) => {
+    const { comment } = req.body;
+    const userId = req.session.userId;
+
+    if (!userId) {
+        console.error('Usuario no autenticado');
+        return res.status(401).send({ error: 'Usuario no autenticado' });
+    }
+
+    console.log('Intentando crear comentario:', comment);
+    db.run('INSERT INTO comments (comment, user_id) VALUES (?, ?)', [comment, userId], function (err) {
         if (err) {
-            console.error('Error al crear usuario:', err.message);
-            return res.status(500).send({ error: 'Error al crear usuario' });
+            console.error('Error al crear comentario:', err.message);
+            return res.status(500).send({ error: 'Error al crear comentario' });
         }
-        // Simula una sesión de usuario después de crear el usuario
-        req.session.userId = this.lastID; 
-        res.status(200).json({ message: 'Usuario creado exitosamente' }); // Enviar una respuesta JSON
+        console.log('Comentario creado con ID:', this.lastID);
+        res.status(200).json({ message: 'Comentario creado exitosamente' });
     });
 });
-
 
 // Ruta para obtener todos los comentarios
 app.get('/obtener-comentarios', (req, res) => {

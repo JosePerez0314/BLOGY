@@ -1,44 +1,29 @@
-document.getElementById('createUserForm').addEventListener('submit', async function (event) {
-    const hamButton = document.getElementById('hamButton');
-    const nav = document.querySelector('.nav');
+document.addEventListener('DOMContentLoaded', (event) => {
+    const form = document.getElementById('createUserForm');
 
-    hamButton.addEventListener('click', function () {
-        if (window.innerWidth < 600) {
-            nav.style.display = nav.style.display === 'none' ? 'flex' : 'none';
-        }
-    });
+    if (form) {
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const username = document.querySelector('input[name="username"]').value;
 
-    window.addEventListener('resize', function () {
-        if (window.innerWidth >= 600) {
-            nav.style.display = 'flex';
-        } else {
-            nav.style.display = 'none';
-        }
-    });
+            try {
+                const response = await fetch('/crear-usuario', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username })
+                });
 
-    event.preventDefault(); // Previene el comportamiento por defecto del formulario
-
-    const username = document.querySelector('.form__input').value;
-    console.log('Enviando datos del usuario:', username);
-
-    try {
-        const response = await fetch('/crear-usuario', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username: username })
+                if (response.ok) {
+                    window.location.href = '/comentario.html';
+                } else {
+                    alert('Error al crear usuario');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al conectar con el servidor');
+            }
         });
-
-        const result = await response.json();
-        if (response.ok) {
-            alert(result.message);
-            window.location.href = 'comentario.html'; // Redirige a la página de comentarios
-        } else {
-            alert('Error al crear el usuario');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Error al conectar con el servidor');
     }
 });
