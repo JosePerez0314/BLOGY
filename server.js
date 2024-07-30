@@ -45,6 +45,24 @@ app.use(express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Ruta para enviar la información de contacto
+app.post('/enviar-contacto', (req, res) => {
+    const { username, message } = req.body;
+
+    if (!username || !message) {
+        return res.status(400).send({ error: 'Debe proporcionar un nombre de usuario y un mensaje' });
+    }
+
+    db.run('INSERT INTO contact (username, message) VALUES (?, ?)', [username, message], function (err) {
+        if (err) {
+            console.error('Error al crear el mensaje de contacto:', err.message);
+            return res.status(500).send({ error: 'Error al crear el mensaje de contacto' });
+        }
+        console.log('Mensaje de contacto creado con ID:', this.lastID);
+        res.status(200).json({ message: 'Mensaje de contacto enviado exitosamente' });
+    });
+});
+
 // Configuración de la sesión
 app.use(session({
     secret: 'mi_secreto',

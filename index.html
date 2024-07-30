@@ -63,14 +63,15 @@
         <section id="contact">
             <div class="contact-container">
                 <img src="img/contacto2.png" alt="Contacto">
-                <form action="">
-                    <input type="text" placeholder="Escriba su Usuario..." class="contact__input">
-                    <input type="text" placeholder="Díganos su problema..." class="contact__input">
+                <form id="contactForm">
+                    <input type="text" placeholder="Escriba su Usuario..." class="contact__input" name="username">
+                    <input type="text" placeholder="Díganos su problema..." class="contact__input" name="message">
+                    <button type="submit" id="submitButton">Enviar</button>
                 </form>
-                <button type="submit" id="submitButton">Enviar</button>
-                <!-- Configurar con javascript para que mande la informacion al form -->
             </div>
         </section>
+        
+        
 
         <footer class="footer">
             <div class="footer__copy-container">
@@ -78,6 +79,7 @@
             </div>
         </footer>
     </div>
+    <script src="contacto.js"></script>
 </body>
 
 </html>
