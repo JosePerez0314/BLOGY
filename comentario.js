@@ -79,6 +79,35 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
+    // Manejar el envío del formulario de búsqueda
+    const buscarForm = document.getElementById('buscarForm');
+    if (buscarForm) {
+        buscarForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const username = document.querySelector('input[name="username"]').value;
+
+            try {
+                // Enviar solicitud de búsqueda al servidor
+                const response = await fetch(`/buscar-comentarios?username=${username}`);
+
+                if (response.ok) {
+                    const comments = await response.json();
+                    if (comments.length === 0) {
+                        alert('Lo siento, pero este usuario no existe');
+                    } else {
+                        mostrarComentarios(comments, username);
+                    }
+                } else {
+                    alert('Error al buscar comentarios');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al conectar con el servidor');
+            }
+        });
+    }
+
     // Cargar comentarios existentes
     cargarComentarios();
 });
@@ -89,22 +118,34 @@ async function cargarComentarios() {
         const response = await fetch('/obtener-comentarios');
         if (response.ok) {
             const comentarios = await response.json();
-            const comentariosLista = document.getElementById('comentarios-lista');
-            comentariosLista.innerHTML = '';
-
-            // Mostrar cada comentario en la lista
-            comentarios.forEach(comentario => {
-                const comentarioDiv = document.createElement('div');
-                comentarioDiv.classList.add('comentario');
-                comentarioDiv.innerHTML = `
-                    <p><strong>${comentario.username}:</strong> ${comentario.comment}</p>
-                `;
-                comentariosLista.appendChild(comentarioDiv);
-            });
+            mostrarComentarios(comentarios);
         } else {
             console.error('Error al cargar comentarios');
         }
     } catch (error) {
         console.error('Error:', error);
     }
+}
+
+// Función para mostrar comentarios en la página
+function mostrarComentarios(comentarios, username = '') {
+    const comentariosLista = document.getElementById('comentarios-lista');
+    comentariosLista.innerHTML = '';
+
+    // Mostrar título con el nombre de usuario (si se proporciona)
+    if (username) {
+        const titulo = document.createElement('h2');
+        titulo.textContent = `Comentarios de ${username}`;
+        comentariosLista.appendChild(titulo);
+    }
+
+    // Mostrar cada comentario en la lista
+    comentarios.forEach(comentario => {
+        const comentarioDiv = document.createElement('div');
+        comentarioDiv.classList.add('comentario');
+        comentarioDiv.innerHTML = `
+            <p><strong>${comentario.username}:</strong> ${comentario.comment}</p>
+        `;
+        comentariosLista.appendChild(comentarioDiv);
+    });
 }

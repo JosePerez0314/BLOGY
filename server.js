@@ -124,6 +124,35 @@ app.get('/comentario.html', verificarAutenticacion, (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'comentario.html'));
 });
 
+// Ruta para buscar comentarios por usuario
+app.get('/buscar-comentarios', (req, res) => {
+    const { username } = req.query;
+
+    if (!username) {
+        return res.status(400).send({ error: 'Debe proporcionar un nombre de usuario' });
+    }
+
+    db.get('SELECT id FROM users WHERE username = ?', [username], (err, user) => {
+        if (err) {
+            console.error('Error al buscar usuario:', err.message);
+            return res.status(500).send({ error: 'Error al buscar usuario' });
+        }
+
+        if (!user) {
+            return res.status(404).send({ error: 'Usuario no encontrado' });
+        }
+
+        db.all('SELECT comment FROM comments WHERE user_id = ?', [user.id], (err, comments) => {
+            if (err) {
+                console.error('Error al obtener comentarios:', err.message);
+                return res.status(500).send({ error: 'Error al obtener comentarios' });
+            }
+
+            res.json(comments);
+        });
+    });
+});
+
 // Ruta para verificar autenticación
 app.get('/verificar-autenticacion', (req, res) => {
     res.json({ autenticado: !!req.session.userId });
