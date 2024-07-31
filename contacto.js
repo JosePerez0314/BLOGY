@@ -15,13 +15,14 @@ document.getElementById('submitButton').addEventListener('click', function(event
     .then(data => {
         if (data.error) {
             console.error('Error:', data.error);
+            alert('Error al enviar el mensaje: ' + data.error);
         } else {
             console.log('Éxito:', data.message);
-            // Notificar al usuario que el mensaje fue enviado
             alert('Mensaje enviado exitosamente');
         }
     })
     .catch((error) => {
         console.error('Error:', error);
+        alert('Error al conectar con el servidor');
     });
 });
