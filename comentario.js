@@ -1,3 +1,4 @@
+// Esperar a que el DOM se haya cargado completamente
 document.addEventListener('DOMContentLoaded', (event) => {
     // Verificar la autenticación del usuario
     fetch('/verificar-autenticacion')
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const hamButton = document.getElementById('hamButton');
     const nav = document.querySelector('.nav');
 
+    // Comprobar si los elementos existen en el DOM
     if (hamButton && nav) {
         // Agregar función al botón de hamburguesa
         hamButton.addEventListener('click', function () {
@@ -108,7 +110,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    // Cargar comentarios existentes
+    // Cargar comentarios existentes al cargar la página
     cargarComentarios();
 });
 

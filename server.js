@@ -5,9 +5,11 @@ const sqlite3 = require('sqlite3').verbose();
 const session = require('express-session');
 const { verificarAutenticacion } = require('./middleware');
 
+// Configuración de la aplicación Express
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-// Base de datos SQLite en archivo
+// Conexión a la base de datos SQLite
 const db = new sqlite3.Database('database.db', (err) => {
     if (err) {
         console.error('Error al abrir la base de datos:', err.message);
@@ -16,51 +18,71 @@ const db = new sqlite3.Database('database.db', (err) => {
     }
 });
 
-// Crear tablas
-db.run(`CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT NOT NULL
-)`, (err) => {
-    if (err) {
-        console.error('Error creando la tabla users:', err.message);
-    } else {
-        console.log('Tabla users creada o ya existente.');
-    }
-});
-
-db.run(`CREATE TABLE IF NOT EXISTS comments (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    comment TEXT NOT NULL,
-    user_id INTEGER NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users (id)
-)`, (err) => {
-    if (err) {
-        console.error('Error creando la tabla comments:', err.message);
-    } else {
-        console.log('Tabla comments creada o ya existente.');
-    }
-});
-
+// Middleware para el análisis del cuerpo de la solicitud
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Configuración de la sesión
 app.use(session({
     secret: 'secreto',
     resave: false,
     saveUninitialized: true
 }));
 
-db.run(`CREATE TABLE IF NOT EXISTS contact (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT NOT NULL,
-    message TEXT NOT NULL
-)`, (err) => {
-    if (err) {
-        console.error('Error creando la tabla contact:', err.message);
-    } else {
-        console.log('Tabla contact creada o ya existente.');
-    }
-});
+// Servir archivos estáticos desde la raíz
+app.use(express.static(path.join(__dirname)));
+
+// Crear tablas si no existen
+const createTables = () => {
+    const createUsersTable = `CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL
+    )`;
+
+    const createCommentsTable = `CREATE TABLE IF NOT EXISTS comments (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        comment TEXT NOT NULL,
+        user_id INTEGER NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES users (id)
+    )`;
+
+    const createContactTable = `CREATE TABLE IF NOT EXISTS contact (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL,
+        message TEXT NOT NULL
+    )`;
+
+    db.run(createUsersTable, (err) => {
+        if (err) {
+            console.error('Error creando la tabla users:', err.message);
+        } else {
+            console.log('Tabla users creada o ya existente.');
+        }
+    });
+
+    db.run(createCommentsTable, (err) => {
+        if (err) {
+            console.error('Error creando la tabla comments:', err.message);
+        } else {
+            console.log('Tabla comments creada o ya existente.');
+        }
+    });
+
+    db.run(createContactTable, (err) => {
+        if (err) {
+            console.error('Error creando la tabla contact:', err.message);
+        } else {
+            console.log('Tabla contact creada o ya existente.');
+        }
+    });
+};
+
+// Llamar a la función para crear tablas
+createTables();
+
+/**
+ * Rutas de la aplicación
+ */
 
 // Ruta para enviar la información de contacto
 app.post('/enviar-contacto', (req, res) => {
@@ -76,15 +98,9 @@ app.post('/enviar-contacto', (req, res) => {
             return res.status(500).send({ error: 'Error al crear el mensaje de contacto' });
         }
         console.log('Mensaje de contacto creado con ID:', this.lastID);
-        res.status(200).json({ message: 'Mensaje de contacto enviado exitosamente' });
-    });
+        res.status(200).json({ message: 'Mensaje de contacto enviado exitosamente' });
+    });
 });
-
-// Configuración para servir archivos estáticos desde la raíz
-app.use(express.static(path.join(__dirname)));
-
-// Middleware para verificar la autenticación
-app.use('/comentarios', verificarAutenticacion);
 
 // Ruta para verificar la autenticación del usuario
 app.get('/verificar-autenticacion', (req, res) => {
@@ -177,12 +193,11 @@ app.get('/buscar-comentarios', (req, res) => {
     });
 });
 
-// Ruta para el archivo usuario.html
+// Rutas para servir archivos HTML
 app.get('/usuario.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'usuario.html'));
 });
 
-// Ruta para el archivo comentario.html
 app.get('/comentario.html', verificarAutenticacion, (req, res) => {
     res.sendFile(path.join(__dirname, 'comentario.html'));
 });
@@ -193,39 +208,6 @@ app.get('/', (req, res) => {
 });
 
 // Iniciar servidor
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor iniciado en http://localhost:${PORT}`);
-});
-
-
-// Ruta para enviar la información de contacto
-app.post('/enviar-contacto', (req, res) => {
-    const { username, message } = req.body;
-
-    if (!username || !message) {
-        return res.status(400).send({ error: 'Debe proporcionar un nombre de usuario y un mensaje' });
-    }
-
-    db.run('INSERT INTO contact (username, message) VALUES (?, ?)', [username, message], function (err) {
-        if (err) {
-            console.error('Error al crear el mensaje de contacto:', err.message);
-            return res.status(500).send({ error: 'Error al crear el mensaje de contacto' });
-        }
-        console.log('Mensaje de contacto creado con ID:', this.lastID);
-        res.status(200).json({ message: 'Mensaje de contacto enviado exitosamente' });
-    });
-});
-
-
-db.run(`CREATE TABLE IF NOT EXISTS contact (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT NOT NULL,
-    message TEXT NOT NULL
-)`, (err) => {
-    if (err) {
-        console.error('Error creando la tabla contact:', err.message);
-    } else {
-        console.log('Tabla contact creada o ya existente.');
-    }
 });
