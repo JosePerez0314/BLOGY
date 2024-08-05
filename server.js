@@ -50,6 +50,36 @@ app.use(session({
     saveUninitialized: true
 }));
 
+db.run(`CREATE TABLE IF NOT EXISTS contact (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    message TEXT NOT NULL
+)`, (err) => {
+    if (err) {
+        console.error('Error creando la tabla contact:', err.message);
+    } else {
+        console.log('Tabla contact creada o ya existente.');
+    }
+});
+
+// Ruta para enviar la información de contacto
+app.post('/enviar-contacto', (req, res) => {
+    const { username, message } = req.body;
+
+    if (!username || !message) {
+        return res.status(400).send({ error: 'Debe proporcionar un nombre de usuario y un mensaje' });
+    }
+
+    db.run('INSERT INTO contact (username, message) VALUES (?, ?)', [username, message], function (err) {
+        if (err) {
+            console.error('Error al crear el mensaje de contacto:', err.message);
+            return res.status(500).send({ error: 'Error al crear el mensaje de contacto' });
+        }
+        console.log('Mensaje de contacto creado con ID:', this.lastID);
+        res.status(200).json({ message: 'Mensaje de contacto enviado exitosamente' });
+    });
+});
+
 // Configuración para servir archivos estáticos desde la raíz
 app.use(express.static(path.join(__dirname)));
 

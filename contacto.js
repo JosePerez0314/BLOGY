@@ -1,8 +1,8 @@
 document.getElementById('submitButton').addEventListener('click', function(event) {
     event.preventDefault(); // Evitar el comportamiento por defecto del botón
 
-    const username = document.querySelector('input[placeholder="Escriba su Usuario..."]').value;
-    const message = document.querySelector('input[placeholder="Díganos su problema..."]').value;
+    const username = document.getElementById('username').value;
+    const message = document.getElementById('message').value;
 
     fetch('/enviar-contacto', {
         method: 'POST',
