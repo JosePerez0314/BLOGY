@@ -36,4 +36,36 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         });
     }
+
+    // Obtener elementos del DOM
+    const hamButton = document.getElementById('hamButton');
+    const nav = document.querySelector('.nav');
+
+    // Comprobar si los elementos existen en el DOM
+    if (hamButton && nav) {
+        // Agregar función al botón de hamburguesa
+        hamButton.addEventListener('click', function () {
+            if (window.innerWidth < 600) {
+                // Mostrar u ocultar el menú de navegación en pantallas pequeñas
+                nav.style.display = nav.style.display === 'none' ? 'flex' : 'none';
+            }
+        });
+
+        // Ajustar la visibilidad del menú de navegación al cambiar el tamaño de la ventana
+        window.addEventListener('resize', function () {
+            if (window.innerWidth >= 600) {
+                nav.style.display = 'flex';
+            } else {
+                nav.style.display = 'none';
+            }
+        });
+
+        // Configurar la visibilidad inicial del menú de navegación
+        if (window.innerWidth < 600) {
+            nav.style.display = 'none';
+        } else {
+            nav.style.display = 'flex';
+        }
+    }
+
 });

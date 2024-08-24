@@ -7,45 +7,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
             if (!data.autenticado) {
                 // Si no está autenticado, redirigir a la página de creación de usuario
                 alert("No tienes una cuenta, te vamos a redirigir a crear un usuario");
-                window.location.href = '/usuario.html'; 
+                window.location.href = '/usuario.html';
             }
         })
         .catch(error => {
             // Manejo de errores en la verificación de autenticación
             console.error('Error al verificar autenticación:', error);
             window.location.href = '/usuario.html';
-        });
-
-    // Obtener elementos del DOM
-    const hamButton = document.getElementById('hamButton');
-    const nav = document.querySelector('.nav');
-
-    // Comprobar si los elementos existen en el DOM
-    if (hamButton && nav) {
-        // Agregar función al botón de hamburguesa
-        hamButton.addEventListener('click', function () {
-            if (window.innerWidth < 600) {
-                // Mostrar u ocultar el menú de navegación en pantallas pequeñas
-                nav.style.display = nav.style.display === 'none' ? 'flex' : 'none';
-            }
-        });
-
-        // Ajustar la visibilidad del menú de navegación al cambiar el tamaño de la ventana
-        window.addEventListener('resize', function () {
-            if (window.innerWidth >= 600) {
-                nav.style.display = 'flex';
-            } else {
-                nav.style.display = 'none';
-            }
-        });
-
-        // Configurar la visibilidad inicial del menú de navegación
-        if (window.innerWidth < 600) {
-            nav.style.display = 'none';
-        } else {
-            nav.style.display = 'flex';
-        }
-    }
+        })
 
     // Manejar el envío del formulario de comentarios
     const form = document.querySelector('form[action="/enviar-comentario"]');
@@ -150,4 +119,35 @@ function mostrarComentarios(comentarios, username = '') {
         `;
         comentariosLista.appendChild(comentarioDiv);
     });
+}
+
+// Obtener elementos del DOM
+const hamButton = document.getElementById('hamButton');
+const nav = document.querySelector('.nav');
+
+// Comprobar si los elementos existen en el DOM
+if (hamButton && nav) {
+    // Agregar función al botón de hamburguesa
+    hamButton.addEventListener('click', function () {
+        if (window.innerWidth < 600) {
+            // Mostrar u ocultar el menú de navegación en pantallas pequeñas
+            nav.style.display = nav.style.display === 'none' ? 'flex' : 'none';
+        }
+    });
+
+    // Ajustar la visibilidad del menú de navegación al cambiar el tamaño de la ventana
+    window.addEventListener('resize', function () {
+        if (window.innerWidth >= 600) {
+            nav.style.display = 'flex';
+        } else {
+            nav.style.display = 'none';
+        }
+    });
+
+    // Configurar la visibilidad inicial del menú de navegación
+    if (window.innerWidth < 600) {
+        nav.style.display = 'none';
+    } else {
+        nav.style.display = 'flex';
+    }
 }
